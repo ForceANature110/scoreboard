@@ -82,11 +82,20 @@ div.AnimatedPanel.AnimationDelay { transition: transform 1s ease-in-out .3s; }
 <<<<<<< ours
 <<<<<<< ours
 <<<<<<< ours
+<<<<<<< ours
+<<<<<<< ours
+<<<<<<< ours
 .TeamBox .Indicator { width: 4%; height: 100%; font-size: 45%; float: left; text-align: center; background: #333; color: #f9f9f9; } 
 .TeamBox .Indicator { width: 1.6em; height: 1.3em; text-align: center; font-size: 75%; }
 .TeamBox [Team="1"] .Indicator { border-radius: 8px 0 0 0; } 
 .TeamBox [Team="2"] .Indicator { border-radius: 0 0 0 8px; } 
 =======
+=======
+>>>>>>> theirs
+=======
+>>>>>>> theirs
+=======
+>>>>>>> theirs
 =======
 >>>>>>> theirs
 =======
@@ -113,6 +122,15 @@ div.AnimatedPanel.AnimationDelay { transition: transform 1s ease-in-out .3s; }
 <<<<<<< ours
 <<<<<<< ours
 <<<<<<< ours
+<<<<<<< ours
+<<<<<<< ours
+<<<<<<< ours
+>>>>>>> theirs
+=======
+>>>>>>> theirs
+=======
+>>>>>>> theirs
+=======
 >>>>>>> theirs
 =======
 >>>>>>> theirs
@@ -128,6 +146,9 @@ div.AnimatedPanel.AnimationDelay { transition: transform 1s ease-in-out .3s; }
 .TeamBox:not(.Lineups.UseLT) .SmallIndicator { display: none; }
 
 /* main area */
+<<<<<<< ours
+<<<<<<< ours
+<<<<<<< ours
 <<<<<<< ours
 <<<<<<< ours
 <<<<<<< ours
@@ -149,6 +170,12 @@ div.AnimatedPanel.AnimationDelay { transition: transform 1s ease-in-out .3s; }
 .TeamBox .Team .DotTimeouts { width: 3%; padding-top: 2px; } 
 .TeamBox .Team .Dot { width: .15em; height: .15em; margin: .05em 0 0 0; } 
 =======
+=======
+>>>>>>> theirs
+=======
+>>>>>>> theirs
+=======
+>>>>>>> theirs
 =======
 >>>>>>> theirs
 =======
@@ -180,6 +207,15 @@ div.AnimatedPanel.AnimationDelay { transition: transform 1s ease-in-out .3s; }
 <<<<<<< ours
 <<<<<<< ours
 <<<<<<< ours
+<<<<<<< ours
+<<<<<<< ours
+<<<<<<< ours
+>>>>>>> theirs
+=======
+>>>>>>> theirs
+=======
+>>>>>>> theirs
+=======
 >>>>>>> theirs
 =======
 >>>>>>> theirs
@@ -202,8 +238,17 @@ div.AnimatedPanel.AnimationDelay { transition: transform 1s ease-in-out .3s; }
 <<<<<<< ours
 <<<<<<< ours
 <<<<<<< ours
+<<<<<<< ours
+<<<<<<< ours
+<<<<<<< ours
 .TeamBox .JammerBox { padding-right: 20px; width: calc(100% - 20px); height: 50%; background: #333; color: #f9f9f9; text-align: right; font-size: 50%; border-radius: 0 8px 8px 0; } 
 =======
+=======
+>>>>>>> theirs
+=======
+>>>>>>> theirs
+=======
+>>>>>>> theirs
 =======
 >>>>>>> theirs
 =======
@@ -225,6 +270,15 @@ div.AnimatedPanel.AnimationDelay { transition: transform 1s ease-in-out .3s; }
 <<<<<<< ours
 <<<<<<< ours
 <<<<<<< ours
+<<<<<<< ours
+<<<<<<< ours
+<<<<<<< ours
+>>>>>>> theirs
+=======
+>>>>>>> theirs
+=======
+>>>>>>> theirs
+=======
 >>>>>>> theirs
 =======
 >>>>>>> theirs
@@ -291,9 +345,24 @@ div.AnimatedPanel.AnimationDelay { transition: transform 1s ease-in-out .3s; }
 <<<<<<< ours
 <<<<<<< ours
 <<<<<<< ours
+<<<<<<< ours
+<<<<<<< ours
+<<<<<<< ours
 .ClockBox .ClockDescription { width: 100%; color: #f9f9f9; font-size: 1em; text-align: center; text-transform: uppercase; width: 100%; } 
 .ClockBox .ClockDescription.Five { color: black; } 
 .ClockBox .ClockDescription.Show { padding: 2px 0; } 
+=======
+.ClockBox .ClockDescription { width: 100%; color: white; font-size: 0.85em; text-align: center; text-transform: uppercase; width: 100%; letter-spacing: 0.1em; } 
+.ClockBox .ClockDescription.Show { padding: 4px 0; } 
+>>>>>>> theirs
+=======
+.ClockBox .ClockDescription { width: 100%; color: white; font-size: 0.85em; text-align: center; text-transform: uppercase; width: 100%; letter-spacing: 0.1em; } 
+.ClockBox .ClockDescription.Show { padding: 4px 0; } 
+>>>>>>> theirs
+=======
+.ClockBox .ClockDescription { width: 100%; color: white; font-size: 0.85em; text-align: center; text-transform: uppercase; width: 100%; letter-spacing: 0.1em; } 
+.ClockBox .ClockDescription.Show { padding: 4px 0; } 
+>>>>>>> theirs
 =======
 .ClockBox .ClockDescription { width: 100%; color: white; font-size: 0.85em; text-align: center; text-transform: uppercase; width: 100%; letter-spacing: 0.1em; } 
 .ClockBox .ClockDescription.Show { padding: 4px 0; } 
@@ -357,12 +426,21 @@ div.AnimatedPanel.AnimationDelay { transition: transform 1s ease-in-out .3s; }
 <<<<<<< ours
 <<<<<<< ours
 <<<<<<< ours
+<<<<<<< ours
+<<<<<<< ours
+<<<<<<< ours
 .OverlayPanel h1 { font-size: 1.8em; line-height: 2em; border-radius: 10px 10px 0 0; text-transform: uppercase; text-align: center; background: #000; color: #f9f9f9; margin-bottom: 0; } 
 .OverlayPanel h2 { font-size: 1.4em; line-height: 1.6em; border-radius: 0 0 10px 10px; text-transform: uppercase; text-align: center; background: #333; color: #f9f9f9; margin-top: 0; } 
 
 .OverlayPanel h4 { background: #333; color: #f9f9f9; border-radius: 0 10px 0 0; margin: 0; padding: 2%; font-size: 2em; } 
 .OverlayPanel h5 { background: #ddd; color: #333; border-radius: 0 0 10px 0; margin: 0; padding: 2%; font-size: 1.2em; } 
 =======
+=======
+>>>>>>> theirs
+=======
+>>>>>>> theirs
+=======
+>>>>>>> theirs
 =======
 >>>>>>> theirs
 =======
@@ -400,6 +478,15 @@ div.AnimatedPanel.AnimationDelay { transition: transform 1s ease-in-out .3s; }
 <<<<<<< ours
 <<<<<<< ours
 <<<<<<< ours
+<<<<<<< ours
+<<<<<<< ours
+<<<<<<< ours
+>>>>>>> theirs
+=======
+>>>>>>> theirs
+=======
+>>>>>>> theirs
+=======
 >>>>>>> theirs
 =======
 >>>>>>> theirs
@@ -457,7 +544,19 @@ div.AnimatedPanel.AnimationDelay { transition: transform 1s ease-in-out .3s; }
 <<<<<<< ours
 <<<<<<< ours
 <<<<<<< ours
+<<<<<<< ours
+<<<<<<< ours
+<<<<<<< ours
 .RosterTeam .Team .Skater .Number { width: 15%; background: #ccc; background: #888; color: #f9f9f9; text-align: center; } 
+=======
+.RosterTeam .Team .Skater .Number { width: 15%; background: rgba(255, 255, 255, 0.3); color: white; text-align: center; } 
+>>>>>>> theirs
+=======
+.RosterTeam .Team .Skater .Number { width: 15%; background: rgba(255, 255, 255, 0.3); color: white; text-align: center; } 
+>>>>>>> theirs
+=======
+.RosterTeam .Team .Skater .Number { width: 15%; background: rgba(255, 255, 255, 0.3); color: white; text-align: center; } 
+>>>>>>> theirs
 =======
 .RosterTeam .Team .Skater .Number { width: 15%; background: rgba(255, 255, 255, 0.3); color: white; text-align: center; } 
 >>>>>>> theirs
@@ -495,7 +594,19 @@ div.AnimatedPanel.AnimationDelay { transition: transform 1s ease-in-out .3s; }
 <<<<<<< ours
 <<<<<<< ours
 <<<<<<< ours
+<<<<<<< ours
+<<<<<<< ours
+<<<<<<< ours
 .PenaltyTeam .Skater .Penalty { display: block; padding: 0px 2px; background: #333; color: #f9f9f9; width: 2em; border-radius: 8px; text-align: center; margin-right: 10px; } 
+=======
+.PenaltyTeam .Skater .Penalty { display: block; padding: 0px 2px; background: rgba(255, 255, 255, 0.2); color: white; width: 2em; border-radius: 8px; text-align: center; margin-right: 10px; } 
+>>>>>>> theirs
+=======
+.PenaltyTeam .Skater .Penalty { display: block; padding: 0px 2px; background: rgba(255, 255, 255, 0.2); color: white; width: 2em; border-radius: 8px; text-align: center; margin-right: 10px; } 
+>>>>>>> theirs
+=======
+.PenaltyTeam .Skater .Penalty { display: block; padding: 0px 2px; background: rgba(255, 255, 255, 0.2); color: white; width: 2em; border-radius: 8px; text-align: center; margin-right: 10px; } 
+>>>>>>> theirs
 =======
 .PenaltyTeam .Skater .Penalty { display: block; padding: 0px 2px; background: rgba(255, 255, 255, 0.2); color: white; width: 2em; border-radius: 8px; text-align: center; margin-right: 10px; } 
 >>>>>>> theirs
@@ -520,6 +631,9 @@ div.AnimatedPanel.AnimationDelay { transition: transform 1s ease-in-out .3s; }
 /* Upcoming */
 .Upcoming { padding-top: 4em; } 
 .Upcoming h1 { border-radius: 1em; } 
+<<<<<<< ours
+<<<<<<< ours
+<<<<<<< ours
 <<<<<<< ours
 <<<<<<< ours
 <<<<<<< ours
@@ -1176,6 +1290,12 @@ body {
 >>>>>>> theirs
 =======
 >>>>>>> theirs
+=======
+>>>>>>> theirs
+=======
+>>>>>>> theirs
+=======
+>>>>>>> theirs
 .Upcoming .UpcomingVS {
   padding: 1em;
   margin: 0 auto;
@@ -1189,6 +1309,15 @@ body {
 <<<<<<< ours
 <<<<<<< ours
 <<<<<<< ours
+<<<<<<< ours
+<<<<<<< ours
+<<<<<<< ours
+>>>>>>> theirs
+=======
+>>>>>>> theirs
+=======
+>>>>>>> theirs
+=======
 >>>>>>> theirs
 =======
 >>>>>>> theirs
