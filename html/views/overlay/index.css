@@ -1,14 +1,40 @@
 /* General look */
+:root {
+  --overlay-surface: rgba(10, 16, 24, 0.75);
+  --overlay-surface-alt: rgba(20, 28, 40, 0.85);
+  --overlay-surface-soft: rgba(255, 255, 255, 0.08);
+  --overlay-border: rgba(255, 255, 255, 0.2);
+  --overlay-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  --overlay-accent: #62d0ff;
+  --overlay-accent-2: #ff7ad9;
+  --overlay-text: #f4f6fb;
+  --overlay-muted: rgba(255, 255, 255, 0.6);
+}
+
 html { height: 100%; width: 100%; } 
-body { font-weight: bold; margin: 0; padding: 0; overflow: hidden; } 
+body {
+  font-weight: 600;
+  font-family: "Inter", "Liberation Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  color: var(--overlay-text);
+  letter-spacing: 0.02em;
+} 
 div { white-space: nowrap; display: block; padding: 0; margin: 0; overflow: hidden; } 
 .Wrapper { clear: both; box-sizing: border-box; } 
 .Box { float: left; margin: 0; padding: 0; position: relative; display: block; } 
 
 .preload * { transition: none !important; } 
 
-.barBackgroundTop, [Team="1"] .barBackground { background: silver; background: linear-gradient(to bottom, #eee, #ddd 30%, #ccc 60%, #bbb); } 
-.barBackgroundBottom, [Team="2"] .barBackground { background: silver; background: linear-gradient(to bottom, #bbb, #ccc 30%, #ddd 60%, #eee); } 
+.barBackgroundTop,
+[Team="1"] .barBackground {
+  background: linear-gradient(120deg, rgba(98, 208, 255, 0.15), rgba(98, 208, 255, 0));
+} 
+.barBackgroundBottom,
+[Team="2"] .barBackground {
+  background: linear-gradient(120deg, rgba(255, 122, 217, 0.2), rgba(255, 122, 217, 0));
+} 
 
 div.Wrapper .TextLeft { text-align: left !important; } 
 div.Wrapper .TextRight { text-align: right !important; } 
@@ -22,35 +48,80 @@ div.AnimatedPanel.AnimationDelay { transition: transform 1s ease-in-out .3s; }
  * teams box 
  **************/
  /* overall */
-.TeamBox { top: 2%; left: 5rem; font-size: 1.8em; line-height: 100%; width: calc(100% - 25rem); } 
+.PanelWrapperTop.OverlayDock {
+  position: absolute;
+  inset: auto 4% 4% 4%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  pointer-events: none;
+}
+
+.PanelWrapperTop.OverlayDock .AnimatedPanel {
+  pointer-events: auto;
+}
+
+.TeamBox {
+  top: auto;
+  left: auto;
+  font-size: 1.4em;
+  line-height: 1.2;
+  width: min(38rem, 70vw);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+} 
 .TeamBox.Lineups.UseLT:not(.ShowNames) { max-width: 35em; } 
-.TeamBox:not(.Lineups.UseLT) { width: 23em; }
+.TeamBox:not(.Lineups.UseLT) { width: min(32rem, 65vw); }
+.TeamBox [Team] { display: flex; flex-direction: column; gap: 0.4rem; }
+.TeamBox .ScoreRow { display: flex; align-items: stretch; gap: 0.5rem; }
 
 /* indicator */
-.TeamBox .Indicator { width: 4%; height: 100%; font-size: 45%; float: left; text-align: center; background: #333; color: white; } 
-.TeamBox .Indicator { width: 1.6em; height: 1.3em; text-align: center; font-size: 75%; }
-.TeamBox [Team="1"] .Indicator { border-radius: 8px 0 0 0; } 
-.TeamBox [Team="2"] .Indicator { border-radius: 0 0 0 8px; } 
+.TeamBox .Indicator {
+  width: 2.2em;
+  height: auto;
+  text-align: center;
+  font-size: 85%;
+  border-radius: 999px;
+  padding: 0.4em 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--overlay-surface-alt);
+  color: var(--overlay-text);
+  border: 1px solid var(--overlay-border);
+  box-shadow: var(--overlay-shadow);
+} 
+.TeamBox [Team="1"] .Indicator { border-radius: 999px; } 
+.TeamBox [Team="2"] .Indicator { border-radius: 999px; } 
 .TeamBox.Lineups.UseLT .Indicator { display: none; }
 
 /* main area */
-.TeamBox .Team { width: 12em; float: left; transition: border-radius 1s; } 
-.TeamBox .Team { border-right: 2px solid #333; } 
-.TeamBox [Team="1"] .Team { border-radius: 0 8px 0 0; } 
-.TeamBox [Team="2"] .Team { border-radius: 0 0 8px 0; } 
-.TeamBox.Lineups.UseLT [Team="1"] .Team { border-radius: 8px 0 0 0; } 
-.TeamBox.Lineups.UseLT [Team="2"] .Team { border-radius: 0 0 0 8px; } 
-.TeamBox:not(.Lineups.UseLT).ShowJammers.InJam .Team { border-radius: 0; } 
+.TeamBox .Team {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.6rem;
+  border-radius: 1.1rem;
+  background: var(--overlay-surface);
+  border: 1px solid var(--overlay-border);
+  box-shadow: var(--overlay-shadow);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+} 
+.TeamBox [Team="1"] .Team { border-left: 4px solid var(--overlay-accent); } 
+.TeamBox [Team="2"] .Team { border-left: 4px solid var(--overlay-accent-2); } 
+.TeamBox:not(.Lineups.UseLT).ShowJammers.InJam .Team { border-radius: 1.1rem; } 
 
-.TeamBox .Team .Name { text-align: left; overflow: hidden; font-size: 80%; } 
-.TeamBox .Team .Name { width: 67%; padding-left: 2%; border-left: 2px solid #666; } 
-.TeamBox .Team .Score { width: 18%; text-align: right; padding-right: .1em; font-size: 90%; } 
-.TeamBox .Team .Mini { width: 8%; font-size: 45%; line-height: 99%; padding-top: 12px; } 
-.TeamBox .Team .Mini .JamScore { width: 100%; text-align: center; } 
-.TeamBox .Team .DotTimeouts { width: 3%; padding-top: 2px; } 
-.TeamBox .Team .Dot { width: .15em; height: .15em; margin: .05em 0 0 0; } 
+.TeamBox .Team .Name { text-align: left; overflow: hidden; font-size: 85%; flex: 1 1 auto; } 
+.TeamBox .Team .Name { padding-left: 0.4rem; } 
+.TeamBox .Team .Score { width: 4.2rem; text-align: right; padding-right: 0.2rem; font-size: 1.1em; font-weight: 700; } 
+.TeamBox .Team .Mini { width: 2.5rem; font-size: 55%; line-height: 1.1; text-align: center; } 
+.TeamBox .Team .Mini .JamScore { width: 100%; text-align: center; color: var(--overlay-muted); } 
+.TeamBox .Team .DotTimeouts { width: 0.8rem; padding-top: 2px; } 
+.TeamBox .Team .Dot { width: 0.2em; height: 0.2em; margin: 0.08em 0 0 0; } 
 .TeamBox .Team .Dot, .Dot.Current { border-radius: 100%; } 
-.TeamBox .Team .Dot { background: #333; } 
+.TeamBox .Team .Dot { background: var(--overlay-text); } 
 .TeamBox .Team .Dot.OfficialReview1.Retained { margin-left: .2em; } 
 .TeamBox .Team .Dot.Used { opacity: 0; } 
 .TeamBox .Team .Dot.Current { opacity: 0; animation: DotActive 0.75s infinite steps(6); } 
@@ -60,7 +131,18 @@ div.AnimatedPanel.AnimationDelay { transition: transform 1s ease-in-out .3s; }
 
 /* lineup area */
 .TeamBox .JammerWrapper { overflow: hidden; } 
-.TeamBox .JammerBox { padding-right: 20px; width: calc(100% - 20px); height: 50%; background: #333; color: white; text-align: right; font-size: 50%; border-radius: 0 8px 8px 0; } 
+.TeamBox .JammerBox {
+  padding: 0.5rem 0.6rem;
+  width: 100%;
+  min-height: 3rem;
+  background: var(--overlay-surface-alt);
+  color: white;
+  text-align: right;
+  font-size: 55%;
+  border-radius: 1rem;
+  border: 1px solid var(--overlay-border);
+  box-shadow: var(--overlay-shadow);
+} 
 .TeamBox.Lineups.UseLT .JammerBox { display: flex; } 
 
 .JammerBox, .JammerBox.Show { margin-left: -100%; } 
@@ -92,23 +174,36 @@ div.AnimatedPanel.AnimationDelay { transition: transform 1s ease-in-out .3s; }
 /*************
  * clock box 
  ************/
-.AnimatedPanel.TopClock { top: 2%; right: 5rem; width: 10rem; border-radius: 10px; } 
+.AnimatedPanel.TopClock {
+  top: auto;
+  right: auto;
+  width: 13rem;
+  border-radius: 18px;
+} 
+
+.ClockCard {
+  border-radius: 1.2rem;
+  background: var(--overlay-surface);
+  border: 1px solid var(--overlay-border);
+  box-shadow: var(--overlay-shadow);
+  overflow: hidden;
+}
 
 .SlideDown { transition: max-height 1s ease; width: 100%; overflow: hidden; padding: 0;  max-height: 0; } 
 
-.ClockBarTop { padding: 0; font-size: 1.4em; width: 100%; padding: 2% 5%; max-height: 2em; } 
-.ClockNames { width: 100%; font-size: 1.7em; } 
+.ClockBarTop { padding: 0; font-size: 1.2em; width: 100%; padding: 6% 8%; max-height: 2.4em; } 
+.ClockNames { width: 100%; font-size: 1.6em; } 
 .ClockNames > .Box { float: left; text-align: center; } 
 .ClockBox .Name { width: 49%; } 
 
-.ClockBarMiddle.SlideDown { background: #888; padding: 0; } 
+.ClockBarMiddle.SlideDown { background: rgba(255, 255, 255, 0.12); padding: 0; } 
 .ClockBarMiddle.SlideDown.Show { max-height: 1.2em; } 
-.ClockBox .ClockDescription { width: 100%; color: white; font-size: 1em; text-align: center; text-transform: uppercase; width: 100%; } 
-.ClockBox .ClockDescription.Show { padding: 2px 0; } 
+.ClockBox .ClockDescription { width: 100%; color: white; font-size: 0.85em; text-align: center; text-transform: uppercase; width: 100%; letter-spacing: 0.1em; } 
+.ClockBox .ClockDescription.Show { padding: 4px 0; } 
 
-.ClockBarBottom { font-size: 1.7em; } 
+.ClockBarBottom { font-size: 1.6em; } 
 .ClockBarBottom.SlideDown.Show { max-height: 2em; }
-.BottomRow { border-radius: 0 0 10px 10px; width: 100%; padding: 2% 5%; }
+.BottomRow { border-radius: 0 0 18px 18px; width: 100%; padding: 4% 8%; }
 .ClockBox .Time.TextLeft { width: 55%; } 
 .ClockBox .Time.TextRight { width: 45%; } 
 .ClockBox .Time.ShowInIntermission { width: 100%; } 
@@ -126,8 +221,8 @@ div.AnimatedPanel.AnimationDelay { transition: transform 1s ease-in-out .3s; }
 .AnimatedPanel.MediumPanel { bottom: 5%; width: 20%; height: 8em; top: auto; border-radius: 10px; left: 40%; } 
 .AnimatedPanel.LowerThird { top: 80%; left: 0; text-align: right; min-width: 45%; width: auto; } 
 
-.PanelWrapperTop .AnimatedPanel.PanelHideTop { transform: translateY(-160%); } 
-.PanelWrapperTop .AnimatedPanel.PanelHideTop.Show { transform: translateY(5%); } 
+.PanelWrapperTop .AnimatedPanel.PanelHideTop { transform: translateY(160%); } 
+.PanelWrapperTop .AnimatedPanel.PanelHideTop.Show { transform: translateY(0); } 
 
 .PanelWrapperLeft .AnimatedPanel { transform: translateY(-50%); } 
 .PanelWrapperLeft .AnimatedPanel.Show { transform: translateY(0); } 
@@ -148,14 +243,37 @@ div.AnimatedPanel.AnimationDelay { transition: transform 1s ease-in-out .3s; }
 .OverlayPanel h1,
 .OverlayPanel h2 { background: #666; display: block; padding: 10px; color: white; } 
 
-.OverlayPanel h1 { font-size: 1.8em; line-height: 2em; border-radius: 10px 10px 0 0; text-transform: uppercase; text-align: center; background: #000; color: white; margin-bottom: 0; } 
-.OverlayPanel h2 { font-size: 1.4em; line-height: 1.6em; border-radius: 0 0 10px 10px; text-transform: uppercase; text-align: center; background: #333; color: white; margin-top: 0; } 
+.OverlayPanel h1 {
+  font-size: 1.8em;
+  line-height: 2em;
+  border-radius: 16px 16px 0 0;
+  text-transform: uppercase;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(98, 208, 255, 0.3), rgba(255, 122, 217, 0.3));
+  color: white;
+  margin-bottom: 0;
+  border: 1px solid var(--overlay-border);
+  backdrop-filter: blur(8px);
+} 
+.OverlayPanel h2 {
+  font-size: 1.3em;
+  line-height: 1.6em;
+  border-radius: 0 0 16px 16px;
+  text-transform: uppercase;
+  text-align: center;
+  background: var(--overlay-surface);
+  color: white;
+  margin-top: 0;
+  border: 1px solid var(--overlay-border);
+  border-top: none;
+  backdrop-filter: blur(8px);
+} 
 
-.OverlayPanel h4 { background: #333; color: white; border-radius: 0 10px 0 0; margin: 0; padding: 2%; font-size: 2em; } 
-.OverlayPanel h5 { background: #ddd; color: #333; border-radius: 0 0 10px 0; margin: 0; padding: 2%; font-size: 1.2em; } 
+.OverlayPanel h4 { background: var(--overlay-surface-alt); color: white; border-radius: 0 14px 0 0; margin: 0; padding: 2%; font-size: 2em; border: 1px solid var(--overlay-border); } 
+.OverlayPanel h5 { background: rgba(255, 255, 255, 0.85); color: #111; border-radius: 0 0 14px 0; margin: 0; padding: 2%; font-size: 1.2em; border: 1px solid var(--overlay-border); } 
 
 .OverlayPanel h4.htop { border-radius: 0; } 
-.OverlayPanel h4.hbottom { border-radius: 0 0 10px 10px; } 
+.OverlayPanel h4.hbottom { border-radius: 0 0 16px 16px; } 
 
 .OverlayPanel h1, .OverlayPanel h2 { margin-left: 10%; margin-right: 0; } 
 .NoLogo h1, .NoLogo h2 { margin-left: 0; } 
@@ -163,23 +281,23 @@ div.AnimatedPanel.AnimationDelay { transition: transform 1s ease-in-out .3s; }
 .TeamLogo { float: left; } 
 
 /* PPJ */
-.PPJContainer { background: #ccc; padding: 10px; } 
-.PPJBox [Team="1"] { border-bottom: 1px solid #777; } 
-.PPJBox [Team="2"] { border-top: 1px solid #777; } 
+.PPJContainer { background: rgba(255, 255, 255, 0.08); padding: 10px; border-radius: 12px; } 
+.PPJBox [Team="1"] { border-bottom: 1px solid rgba(255, 255, 255, 0.2); } 
+.PPJBox [Team="2"] { border-top: 1px solid rgba(255, 255, 255, 0.2); } 
 .PPJBox .Team { height: 23vh; } 
 .PPJBox .Period { height: 23vh; position: relative; display: block; float: left; } 
 .PPJBox [Period="2"] { border-left: 2px solid #777; } 
 .PPJBox h4 { text-transform: uppercase; text-align: center; font-size: 1.4em; } 
 
 .JammerStar { text-align: center; color: #ddd; position: absolute; font-size: 1.6em; font-weight: normal; } 
-.Points { width: 100%; text-align: center; color: #333; position: absolute; font-size: 1.6em; font-weight: normal; height: 2em; } 
+.Points { width: 100%; text-align: center; color: #f5f5f5; position: absolute; font-size: 1.6em; font-weight: normal; height: 2em; } 
 [Team="1"] .Points { top: 0vh; } 
 [Team="1"] .JammerStar { top: 3vh; } 
 [Team="2"] .JammerStar { top: 15vh; } 
 [Team="2"] .Points { top: 20vh; } 
 
-.GraphBlock { display: block; float: left; width: 10px; background: #888; margin: 0 2px; font-size: 60%; text-align: center; } 
-.PPJBox [Period="2"] .GraphBlock { background: #999; } 
+.GraphBlock { display: block; float: left; width: 10px; background: rgba(255, 255, 255, 0.35); margin: 0 2px; font-size: 60%; text-align: center; } 
+.PPJBox [Period="2"] .GraphBlock { background: rgba(255, 255, 255, 0.45); } 
 [Team="1"] .GraphBlock { margin-top: 1px; } 
 [Team="2"] .GraphBlock { margin-bottom: 1px; } 
 .GraphBlock.Lead.Lost .JammerStar { color: #666; } 
@@ -190,7 +308,7 @@ div.AnimatedPanel.AnimationDelay { transition: transform 1s ease-in-out .3s; }
 
 /* Roster */
 .RosterTeam .TeamLogo { margin-bottom: .5em; } 
-.RosterTeam .Team .Skater { width: 48%; float: left; background: #ccc; overflow: hidden; font-size: 1.5em; line-height: 1.8em; } 
+.RosterTeam .Team .Skater { width: 48%; float: left; background: rgba(255, 255, 255, 0.15); overflow: hidden; font-size: 1.5em; line-height: 1.8em; border-radius: 8px; } 
 .RosterTeam .Team .Skater:nth-child(odd) { margin-right: 4%; } 
 .RosterTeam .Team .Skater:nth-child(1) .Number, .RosterTeam .Team .Skater:nth-child(2) .Number,
 .RosterTeam .Team .Skater:nth-child(1), .RosterTeam .Team .Skater:nth-child(2) { border-radius: 10px 0 0 0; } 
@@ -199,7 +317,7 @@ div.AnimatedPanel.AnimationDelay { transition: transform 1s ease-in-out .3s; }
 .RosterTeam .Team .Skater .Number,
 .RosterTeam .Team .Skater .Flags,
 .RosterTeam .Team .Skater .Name { min-height: 1.7em; max-height: 1.7em; float: left; overflow: hidden; } 
-.RosterTeam .Team .Skater .Number { width: 15%; background: #ccc; background: #888; color: white; text-align: center; } 
+.RosterTeam .Team .Skater .Number { width: 15%; background: rgba(255, 255, 255, 0.3); color: white; text-align: center; } 
 .RosterTeam .Team .Skater .Name { width: 72%; } 
 .RosterTeam .Team .Skater .Flags { width: 8%; float: left; vertical-align: middle; text-align: center; border-radius: 5px; color: #888; } 
 .RosterTeam .Team .Skater .Flags[data-flag="C"]:after { content: 'C'; visibility: visible; } 
@@ -214,14 +332,14 @@ div.AnimatedPanel.AnimationDelay { transition: transform 1s ease-in-out .3s; }
 /* Penalties */
 .PenaltyTeam .NoShow { display: none; } 
 .PenaltyTeam .TeamLogo { margin-bottom: .5em; } 
-.PenaltyTeam .SortBox { border-radius: 10px; } 
+.PenaltyTeam .SortBox { border-radius: 10px; background: rgba(10, 16, 24, 0.6); border: 1px solid var(--overlay-border); } 
 .PenaltyTeam .Team .Skater { width: 100%; font-size: 1.2em; line-height: 1.4em; height: 1.4em; clear: both; } 
-.PenaltyTeam .Team .Skater:nth-child(odd) { background: #ccc; } 
-.PenaltyTeam .Team .Skater:nth-child(even) { background: #ddd; } 
+.PenaltyTeam .Team .Skater:nth-child(odd) { background: rgba(255, 255, 255, 0.08); } 
+.PenaltyTeam .Team .Skater:nth-child(even) { background: rgba(255, 255, 255, 0.12); } 
 .PenaltyTeam .Team .Number { float: left; width: 7%; padding-left: 2em; padding-right: 1em; color: #333; min-height: 100%; text-align: right; } 
-.PenaltyTeam .Team .Name { float: left; width: 24%; color: #333; } 
+.PenaltyTeam .Team .Name { float: left; width: 24%; color: #f5f5f5; } 
 .PenaltyTeam .Team .Penalty { float: left; width: 8%; } 
-.PenaltyTeam .Skater .Penalty { display: block; padding: 0px 2px; background: #333; color: white; width: 2em; border-radius: 8px; text-align: center; margin-right: 10px; } 
+.PenaltyTeam .Skater .Penalty { display: block; padding: 0px 2px; background: rgba(255, 255, 255, 0.2); color: white; width: 2em; border-radius: 8px; text-align: center; margin-right: 10px; } 
 .PenaltyTeam .Skater[warn="1"] .Penalty { background: darkorange; } 
 .PenaltyTeam .Skater[warn="2"] .Penalty { background: orange; } 
 .PenaltyTeam .Skater[warn="3"] .Penalty { background: red; } 
@@ -234,4 +352,13 @@ div.AnimatedPanel.AnimationDelay { transition: transform 1s ease-in-out .3s; }
 /* Upcoming */
 .Upcoming { padding-top: 4em; } 
 .Upcoming h1 { border-radius: 1em; } 
-.Upcoming .UpcomingVS { padding: 1em; margin: 0 auto; width: 4em; background: white; color: red; font-size: 1em; border-radius: 1em; text-align: center; } 
+.Upcoming .UpcomingVS {
+  padding: 1em;
+  margin: 0 auto;
+  width: 4em;
+  background: rgba(255, 255, 255, 0.9);
+  color: #d4006a;
+  font-size: 1em;
+  border-radius: 1em;
+  text-align: center;
+} 
