@@ -1,4 +1,26 @@
-body { color: #FFFFFF; font-weight: bold; background: #000000; height: 100%; width: 100%; margin: 0; padding: 0; user-select: none; } 
+body {
+  --scoreboard-surface: rgba(10, 16, 24, 0.78);
+  --scoreboard-surface-alt: rgba(20, 28, 40, 0.88);
+  --scoreboard-border: rgba(255, 255, 255, 0.22);
+  --scoreboard-shadow: 0 2vh 6vh rgba(0, 0, 0, 0.5);
+  --scoreboard-accent-left: #62d0ff;
+  --scoreboard-accent-right: #ff7ad9;
+  --scoreboard-text: #f4f6fb;
+  --scoreboard-muted: rgba(255, 255, 255, 0.68);
+  color: var(--scoreboard-text);
+  font-weight: 700;
+  font-family: "Inter", "Liberation Sans", sans-serif;
+  background:
+    radial-gradient(circle at 20% 15%, rgba(98, 208, 255, 0.18), transparent 28%),
+    radial-gradient(circle at 80% 20%, rgba(255, 122, 217, 0.16), transparent 30%),
+    linear-gradient(135deg, #060a10 0%, #111926 55%, #080b11 100%);
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  letter-spacing: 0.02em;
+} 
 
 /* Alternative View handling */
 .DisplayPane { opacity: 0; position: absolute; left: 0; top: 0; width: 100%; height: 100%; transition: opacity 1s; } 
@@ -11,16 +33,23 @@ div { text-align: center; overflow: hidden; }
 a { display: inline-block; }
 
 
-.Box { box-shadow: inset -0.03em -0.05em 0.15em rgba(0,0,0,0.5); color: #000000; background: linear-gradient(to bottom, #FFFFFF, #A0A0A0); border-radius: 15px; }
+.Box {
+  box-shadow: var(--scoreboard-shadow);
+  color: var(--scoreboard-text);
+  background: var(--scoreboard-surface);
+  border: 0.12vh solid var(--scoreboard-border);
+  border-radius: 2.4vh;
+  backdrop-filter: blur(1.2vh);
+}
 body.box_flat .Box.FlatBottom { border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; }
 body.box_flat .Box.FlatTop { border-top-left-radius: 0px; border-top-right-radius: 0px; }
-body.box_flat .Box { background: linear-gradient(to bottom, #EFEFEF, #D4D4D4); box-shadow: none; border-radius: 5px; }
-body.bright .Box { background: #FFFFFF; }
+body.box_flat .Box { background: rgba(20, 28, 40, 0.9); box-shadow: none; border-radius: 1.2vh; }
+body.bright .Box { background: rgba(255, 255, 255, 0.92); color: #111827; }
 
-.Box.Red.Red { background: linear-gradient(to bottom, #D02020, #802020); color: #FFFFFF; } 
-body.bright .Box.Red { background: #A02020; } 
+.Box.Red.Red { background: linear-gradient(135deg, #ff4b4b, #9e1c32); color: #FFFFFF; } 
+body.bright .Box.Red { background: #A02020; color: #FFFFFF; } 
 
-body.box_flat .Box.FlatDark, .Team>.JamScore.NoInitial:not(.Overtime) { color: #FFFFFF; background: linear-gradient(to bottom, #595959, #474747); }
+body.box_flat .Box.FlatDark, .Team>.JamScore.NoInitial:not(.Overtime) { color: #FFFFFF; background: var(--scoreboard-surface-alt); }
 
 .Team>.Jammer.HasLead>.Name { color: #FF0000; animation: HasLead 1s infinite steps(6); } 
 @keyframes HasLead { 
@@ -29,8 +58,8 @@ body.box_flat .Box.FlatDark, .Team>.JamScore.NoInitial:not(.Overtime) { color: #
 
 body.HideLineups .Team>.Jammer.ShowInBetweenJams:not(.HasClock)>.Name, body.HideLineups:not(.PenaltyClocks) .Team>.Jammer.ShowInBetweenJams>.Name { visibility: hidden; }
 
-.Dot { border-radius: 100%; background: #000000; } 
-.Dot.Current { background: #000000; opacity: 0; animation: DotActive 0.75s infinite steps(6); } 
+.Dot { border-radius: 100%; background: var(--scoreboard-text); } 
+.Dot.Current { background: var(--scoreboard-text); opacity: 0; animation: DotActive 0.75s infinite steps(6); } 
 .Dot.Used { opacity: 0; } 
 @keyframes DotActive { 
   0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } 
@@ -142,3 +171,111 @@ body.box_flat .Clock.Jam.Large>.Name { left: 0%; width: 100%; height: 40% }
 #SponsorBox>div.FinishedImg { right: -100%; } 
 #SponsorBox>div>img { width: 100%; height: 100%; } 
 #SponsorBox>div>[src=""] { display: none; }
+
+
+/* Modern overlay-inspired scoreboard theme */
+#scoreboard::before {
+  content: "";
+  position: absolute;
+  inset: 1.5%;
+  border: 0.12vh solid rgba(255, 255, 255, 0.08);
+  border-radius: 3vh;
+  pointer-events: none;
+}
+
+.Team>.Name {
+  color: var(--scoreboard-text) !important;
+  background: var(--scoreboard-surface) !important;
+  border: 0.12vh solid var(--scoreboard-border);
+  box-shadow: var(--scoreboard-shadow);
+  text-shadow: none !important;
+  backdrop-filter: blur(1.2vh);
+}
+
+.Team.Left>.Name,
+.Team.Left>.Score,
+.Team.Left>.JamScore,
+.Team.Left>.StarPass,
+.Team.Left>.Jammer>.Name {
+  border-left: 0.6vh solid var(--scoreboard-accent-left);
+}
+
+.Team.Right>.Name,
+.Team.Right>.Score,
+.Team.Right>.JamScore,
+.Team.Right>.StarPass,
+.Team.Right>.Jammer>.Name {
+  border-right: 0.6vh solid var(--scoreboard-accent-right);
+}
+
+.Team>.Logo {
+  filter: drop-shadow(0 1.2vh 2.2vh rgba(0, 0, 0, 0.45));
+}
+
+.Team>.Score {
+  line-height: 0.9;
+  color: var(--scoreboard-text);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.04));
+}
+
+.Team>.JamScore,
+.Team>.StarPass,
+.Team>.DotTimeouts,
+.Team>.DotOfficialReviews,
+.Team>.Penalties>div {
+  background: var(--scoreboard-surface-alt);
+  color: var(--scoreboard-text);
+}
+
+.Team>.DotTimeouts,
+.Team>.DotOfficialReviews {
+  border: 0.12vh solid var(--scoreboard-border);
+  box-shadow: var(--scoreboard-shadow);
+  backdrop-filter: blur(1.2vh);
+}
+
+.Team>.Jammer>.Name {
+  background: var(--scoreboard-surface-alt);
+  color: var(--scoreboard-text);
+}
+
+.Team>.Jammer>.PenaltyTime {
+  border-radius: 2vh;
+}
+
+.Team>.Jammer.HasLead>.Name {
+  color: #ff4b4b;
+  text-shadow: 0 0 1.2vh rgba(255, 75, 75, 0.55);
+}
+
+.Clock.Period.Large>.Name,
+.Clock.Jam.Large>.Name,
+.Clock.Intermission .Message {
+  background: linear-gradient(135deg, rgba(98, 208, 255, 0.3), rgba(255, 122, 217, 0.3));
+  color: var(--scoreboard-text);
+  border-color: var(--scoreboard-border);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.Clock.Period.Large>.Time,
+.Clock.Jam.Large>.Time,
+.Clock.Intermission .Time,
+.Clock.Small {
+  background: var(--scoreboard-surface);
+  color: var(--scoreboard-text);
+  border-color: var(--scoreboard-border);
+}
+
+.Clock.Description.Small {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: var(--scoreboard-surface-alt);
+}
+
+#SponsorBox {
+  background: rgba(10, 16, 24, 0.62);
+  border-top: 0.12vh solid var(--scoreboard-border);
+  box-shadow: var(--scoreboard-shadow);
+  backdrop-filter: blur(1.2vh);
+}
